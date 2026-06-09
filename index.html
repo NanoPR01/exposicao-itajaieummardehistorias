@@ -63,6 +63,12 @@ body{
     color:#666;
     margin-bottom:35px;
 }
+    .biografia{
+    text-align:justify;
+    line-height:1.8;
+    margin-bottom:30px;
+    color:#333;
+}
 
 audio{
     width:100%;
@@ -144,12 +150,17 @@ if(!obra){
             ${obra.autor}
         </h1>
 
-        <p class="narrador">
-            Narração: ${obra.narrador}
-        </p>
+       <p class="narrador">
+Narração: ${obra.narrador}
+</p>
 
-        <audio controls>
-            <source src="${obra.audio}" type="audio/mpeg">
+<div class="biografia">
+${obra.biografia}
+</div>
+
+<audio controls>
+<source src="${obra.audio}" type="audio/mpeg">
+</audio>
             Seu navegador não suporta áudio.
         </audio>
 
