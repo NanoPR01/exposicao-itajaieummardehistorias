@@ -5,7 +5,7 @@ const obras = [
     autor: "Autor de Teste",
     narrador: "Aluno de Teste",
     biografia: "texto teste"
-    audio: "audios/obra001.mp3"
+    audio: "EI.CLARINDO.ogg"
 }
 
 ];
