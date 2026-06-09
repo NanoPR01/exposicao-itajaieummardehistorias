@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>166 Anos de Itajaí | Itajaí é um mar de histórias</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --azul:#003E6B;
+    --azul-claro:#1F7CCB;
+    --fundo:#F4F7FA;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--fundo);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    background:#fff;
+    width:100%;
+    max-width:800px;
+    border-radius:24px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.selo{
+    color:#003E6B;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.autor{
+    color:#003E6B;
+    font-size:2.2rem;
+    margin-bottom:12px;
+}
+
+.narrador{
+    color:#666;
+    margin-bottom:35px;
+}
+
+audio{
+    width:100%;
+}
+
+footer{
+    margin-top:30px;
+    color:#777;
+    font-size:.9rem;
+}
+
+.erro{
+    text-align:center;
+}
+
+.erro h2{
+    color:#003E6B;
+    margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+    .card{
+        padding:28px;
+    }
+
+    .autor{
+        font-size:1.7rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script src="dados.js"></script>
+
+<script>
+
+const parametros = new URLSearchParams(window.location.search);
+const id = Number(parametros.get("obra"));
+
+const obra = obras.find(item => item.id === id);
+
+const app = document.getElementById("app");
+
+if(!obra){
+
+    app.innerHTML = `
+    <div class="card erro">
+
+        <div class="selo">
+            166 ANOS DE ITAJAÍ
+        </div>
+
+        <h2>Exposição de Autores Itajaienses</h2>
+
+        <p>
+            Utilize o QR Code disponível na exposição.
+        </p>
+
+    </div>
+    `;
+
+}else{
+
+    app.innerHTML = `
+    <div class="card">
+
+        <div class="selo">
+            166 ANOS DE ITAJAÍ
+        </div>
+
+        <h1 class="autor">
+            ${obra.autor}
+        </h1>
+
+        <p class="narrador">
+            Narração: ${obra.narrador}
+        </p>
+
+        <audio controls>
+            <source src="${obra.audio}" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+
+        <footer>
+            Rede Municipal de Ensino de Itajaí
+        </footer>
+
+    </div>
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
